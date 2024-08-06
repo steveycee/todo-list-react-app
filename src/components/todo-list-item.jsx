@@ -1,14 +1,14 @@
 import "./todo-list-item.css";
 
 function ListItem() {
-	return (
-		<>
-			<div className="listitem">
-				<h3>Test ListItem</h3>
-				<button>X</button>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <li className="listitem">
+        <p>Test ListItem</p>
+        <button>X</button>
+      </li>
+    </>
+  );
 }
 
 export default ListItem;

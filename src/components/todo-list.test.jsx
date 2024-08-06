@@ -3,6 +3,7 @@ import ToDoList from "./todo-list";
 import { beforeEach } from "vitest";
 
 let addTodo;
+let removeTodo;
 
 describe("ToDoList", () => {
   beforeEach(() => {
@@ -21,5 +22,16 @@ describe("ToDoList", () => {
     fireEvent.click(addTodo);
     const listItems = screen.getAllByRole("listitem");
     expect(listItems).toHaveLength(1);
+  });
+  it("renders the TodoList component and clicks to add a new TodoListItem", () => {
+    fireEvent.click(addTodo);
+    let listItems = screen.getAllByRole("listitem");
+    expect(listItems).toHaveLength(1);
+    removeTodo = screen.getByRole("button", { name: "X" });
+    expect(removeTodo).toBeInTheDocument();
+    fireEvent.click(removeTodo);
+    listItems = screen.queryAllByRole("listitem");
+    expect(listItems).toHaveLength(0);
+    screen.debug();
   });
 });

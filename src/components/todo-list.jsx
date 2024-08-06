@@ -2,22 +2,30 @@ import { useState } from "react";
 import ListItem from "./todo-list-item";
 
 function ToDoList() {
-	const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
 
-	const addListItem = () => {
-		setItems([...items, {}]);
-		console.log(items.length);
-	};
+  const addListItem = () => {
+    setItems([...items, {}]);
+    console.log("added list item");
+  };
 
-	return (
-		<>
-			<h2>Test ToDoList</h2>
-			<button onClick={addListItem}>Add list item</button>
-			{items.map((_, index) => (
-				<ListItem key={index} />
-			))}
-		</>
-	);
+  const removeListItem = (index) => {
+    setItems((prevItems) => prevItems.filter((_, i) => i !== index));
+    console.log("removeListItem");
+  };
+
+  return (
+    <>
+      <h2>Test ToDoList</h2>
+      <button onClick={addListItem}>Add list item</button>
+      {items.map((_, index) => (
+        <ListItem
+          key={index}
+          handleRemoveListItem={() => removeListItem(index)}
+        />
+      ))}
+    </>
+  );
 }
 
 export default ToDoList;

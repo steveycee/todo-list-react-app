@@ -1,11 +1,17 @@
 import "./todo-list-item.css";
 
-function ListItem() {
+function ListItem({ handleRemoveListItem }) {
   return (
     <>
       <li className="listitem">
         <p>Test ListItem</p>
-        <button>X</button>
+        <button
+          onClick={() => {
+            handleRemoveListItem();
+          }}
+        >
+          X
+        </button>
       </li>
     </>
   );

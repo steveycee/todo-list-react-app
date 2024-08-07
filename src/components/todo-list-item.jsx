@@ -1,14 +1,20 @@
 import "./todo-list-item.css";
 
-function ListItem() {
-	return (
-		<>
-			<div className="listitem">
-				<h3>Test ListItem</h3>
-				<button>X</button>
-			</div>
-		</>
-	);
+function ListItem({ handleRemoveListItem }) {
+  return (
+    <>
+      <li className="listitem">
+        <p>Test ListItem</p>
+        <button
+          onClick={() => {
+            handleRemoveListItem();
+          }}
+        >
+          X
+        </button>
+      </li>
+    </>
+  );
 }
 
 export default ListItem;

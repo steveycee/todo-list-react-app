@@ -10,7 +10,7 @@ function TodoListItem({ handleRemoveListItem }) {
 				<form>
 					<input
 						type="text"
-						placeholder="Write your todo here"
+						placeholder="Enter text here"
 						// ref={inputRef}
 					/>
 				</form>

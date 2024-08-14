@@ -1,36 +1,53 @@
 import { useState } from "react";
 import "./todo-list-item.css";
 
+let nextId = 0;
+
 function TodoListItem({ handleRemoveListItem }) {
-	const [listItemsContent, setListItemsContent] = useState([""]);
+  const [todoInputContent, setTodoInputContent] = useState("");
+  const [todos, setTodos] = useState([]);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(value);
-	};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(todoInputContent);
+    console.log(todos);
+    console.log("Form submitted");
+  };
 
-	return (
-		<>
-			<li className="listitem">
-				<form>
-					<input
-						onSubmit={handleSubmit}
-						type="text"
-						placeholder="Enter text here"
-						onChange={(e) => setListItemsContent(e.target.value)}
-					/>
-				</form>
-				<button>✓</button>
-				<button
-					onClick={() => {
-						handleRemoveListItem();
-					}}
-				>
-					X
-				</button>
-			</li>
-		</>
-	);
+  return (
+    <>
+      <li className="listitem">
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Enter text here"
+            onChange={(e) => setTodoInputContent(e.target.value)}
+          />
+          <input
+            type="submit"
+            value="✓"
+            onClick={() => {
+              todos.push({
+                id: nextId++,
+                content: todoInputContent,
+              });
+            }}
+          />
+          <input
+            type="button"
+            value="X"
+            onClick={() => {
+              handleRemoveListItem();
+            }}
+          />
+        </form>
+      </li>
+    </>
+  );
 }
 
 export default TodoListItem;

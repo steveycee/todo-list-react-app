@@ -4,3 +4,4 @@ https://react.dev/learn/state-a-components-memory
 https://vitest.dev/api/
 
 [Tutorial of someone doing a todo list app](https://www.youtube.com/watch?v=LoYbN6qoQHA)
+[Updating arrays in state](https://react.dev/learn/updating-arrays-in-state)

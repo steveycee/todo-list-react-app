@@ -23,6 +23,7 @@ function TodoListItem({ handleRemoveListItem }) {
           }}
         >
           <input
+            role="textbox"
             type="text"
             placeholder="Enter text here"
             onChange={(e) => setTodoInputContent(e.target.value)}

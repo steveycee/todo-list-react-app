@@ -3,15 +3,21 @@ import "./todo-list-item.css";
 
 let nextId = 0;
 
-function TodoListItem({ handleRemoveListItem }) {
+function TodoListItem({ handleRemoveListItem, handleLonelyIsland }) {
   const [todoInputContent, setTodoInputContent] = useState("");
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(todoInputContent);
-    console.log(todos);
-    console.log("Form submitted");
+    console.log("handleSubmit function called.");
+  };
+
+  const handleSavingTodo = () => {
+    todos.push({
+      id: nextId++,
+      content: todoInputContent,
+    });
+    console.log("handleSavingTodo function called.");
   };
 
   return (
@@ -22,8 +28,7 @@ function TodoListItem({ handleRemoveListItem }) {
             handleSubmit(e);
           }}
         >
-          <input
-            role="textbox"
+          <textarea
             type="text"
             placeholder="Enter text here"
             onChange={(e) => setTodoInputContent(e.target.value)}
@@ -32,10 +37,7 @@ function TodoListItem({ handleRemoveListItem }) {
             type="submit"
             value="✓"
             onClick={() => {
-              todos.push({
-                id: nextId++,
-                content: todoInputContent,
-              });
+              handleSavingTodo();
             }}
           />
           <input
@@ -43,6 +45,7 @@ function TodoListItem({ handleRemoveListItem }) {
             value="X"
             onClick={() => {
               handleRemoveListItem();
+              handleLonelyIsland();
             }}
           />
         </form>

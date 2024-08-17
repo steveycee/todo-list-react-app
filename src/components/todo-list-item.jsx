@@ -7,17 +7,17 @@ function TodoListItem({ handleRemoveListItem, handleLonelyIsland }) {
   const [todoInputContent, setTodoInputContent] = useState("");
   const [todos, setTodos] = useState([]);
 
+  // TODO: do handleSubmit and handleSavingTodo need to be different functions?
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit function called.");
-  };
-
-  const handleSavingTodo = () => {
     todos.push({
       id: nextId++,
       content: todoInputContent,
     });
-    console.log("handleSavingTodo function called.");
+    console.log(
+      "handleSavingTodo function was called and pushed to the todos list. The todo's array length is: " +
+        todos.length
+    );
   };
 
   return (
@@ -33,13 +33,7 @@ function TodoListItem({ handleRemoveListItem, handleLonelyIsland }) {
             placeholder="Enter text here"
             onChange={(e) => setTodoInputContent(e.target.value)}
           />
-          <input
-            type="submit"
-            value="✓"
-            onClick={() => {
-              handleSavingTodo();
-            }}
-          />
+          <input type="submit" value="✓" />
           <input
             type="button"
             value="X"

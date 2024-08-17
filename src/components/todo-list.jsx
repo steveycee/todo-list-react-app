@@ -11,6 +11,9 @@ function ToDoList() {
 
   const removeListItem = (index) => {
     setItems((prevItems) => prevItems.filter((_, i) => i !== index));
+    // if (index > -1) {
+    //   todos.splice(index, 1);
+    // }
     console.log("removeListItem function called.");
   };
 

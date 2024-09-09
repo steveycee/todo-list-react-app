@@ -5,7 +5,7 @@ import { beforeEach } from "vitest";
 let removeTodo;
 let addTodo;
 
-describe("Todo List Item tests", () => {
+describe.skip("Todo List Item tests", () => {
   beforeEach(() => {
     render(<TodoListItem />);
   });

@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
-import TodoListItem from "./todo-list-item";
+// import TodoListItem from "./todo-list-item";
 
 function ToDoList() {
   const [todoInputContent, setTodoInputContent] = useState("");
   const [todos, setTodos] = useState([]);
 
   let nextId = useRef(0);
-  
+
   const handleSavingListItem = (e) => {
     e.preventDefault();
     const newTodo = {
@@ -14,39 +14,39 @@ function ToDoList() {
       content: todoInputContent,
     };
     setTodos([...todos, newTodo]);
-    console.log("handleSavingListItem called with the following content: " + todoInputContent)
+    console.log(
+      "handleSavingListItem called with the following content: " +
+        todoInputContent
+    );
   };
-  
+
   const removeListItem = (id) => {
     let todoIndex = todos.indexOf(id);
-    console.log(todoIndex)
+    console.log(todoIndex);
     todos.splice(todoIndex, 1);
-    console.log('removeListItem function called.')
-  }
+    console.log("removeListItem function called.");
+  };
 
   return (
     <>
       <h2>Test ToDoList</h2>
-      <form
-          onSubmit={handleSavingListItem}
-        >
-          <textarea
-            type="text"
-            placeholder="Enter text here"
-            onChange={(e) => setTodoInputContent(e.target.value)}
-          />
-          <input type="submit" value="✓" />
-        </form>
-        <p>TodoInputContent is: {todoInputContent}</p>
+      <form onSubmit={handleSavingListItem}>
+        <textarea
+          type="text"
+          placeholder="Enter text here"
+          onChange={(e) => setTodoInputContent(e.target.value)}
+        />
+        <input type="submit" value="✓" />
+      </form>
+      <p>TodoInputContent is: {todoInputContent}</p>
       <ul>
-          {
-          todos.map((todos) => (
-            <>
-              <li key={todos.id}>Todos is: {todos.content} with an id of {todos.id}</li>
-            </>
+        {todos.map((todos) => (
+          <li key={todos.id}>
+            Todos is: {todos.content} with an id of {todos.id}
+          </li>
         ))}
       </ul>
-    </> 
+    </>
   );
 }
 export default ToDoList;

@@ -2,43 +2,33 @@ import { useState, useRef } from "react";
 import TodoListItem from "./todo-list-item";
 
 function ToDoList() {
-  const [items, setItems] = useState([]);
   const [todoInputContent, setTodoInputContent] = useState("");
   const [todos, setTodos] = useState([]);
 
   let nextId = useRef(0);
-
-  const addListItem = () => {
-    setItems([...items, {}]);
-    console.log("addListItem function called.");
-  };
-
-  const removeListItem = (index) => {
-    setItems((prevItems) => prevItems.filter((_, i) => i !== index));
-    // if (index > -1) {
-    //   todos.splice(index, 1);
-    // }
-    console.log("removeListItem function called.");
-  };
-
-  const handleSavingTodo = (e) => {
+  
+  const handleSavingListItem = (e) => {
     e.preventDefault();
     const newTodo = {
       id: nextId.current++,
       content: todoInputContent,
     };
     setTodos([...todos, newTodo]);
-    console.log(todoInputContent)
-    console.log(todos)
+    console.log("handleSavingListItem called with the following content: " + todoInputContent)
   };
-
+  
+  const removeListItem = (id) => {
+    let todoIndex = todos.indexOf(id);
+    console.log(todoIndex)
+    todos.splice(todoIndex, 1);
+    console.log('removeListItem function called.')
+  }
 
   return (
     <>
       <h2>Test ToDoList</h2>
-      {/* <button onClick={addListItem}>Add list item</button> */}
       <form
-          onSubmit={handleSavingTodo}
+          onSubmit={handleSavingListItem}
         >
           <textarea
             type="text"
@@ -49,11 +39,14 @@ function ToDoList() {
         </form>
         <p>TodoInputContent is: {todoInputContent}</p>
       <ul>
-                    {todos.map((todos) => (
-                <li key={todos.id}>Todos is: {todos.content}</li> 
-      ))}
+          {
+          todos.map((todos) => (
+            <>
+              <li key={todos.id}>Todos is: {todos.content} with an id of {todos.id}</li>
+            </>
+        ))}
       </ul>
-    </>
+    </> 
   );
 }
 export default ToDoList;

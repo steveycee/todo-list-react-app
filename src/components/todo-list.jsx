@@ -21,12 +21,11 @@ function ToDoList() {
     setTodoInputContent("");
   };
 
-  const removeListItem = (id) => {
-    let todoIndex = todos.indexOf(id);
-    console.log(todoIndex);
-    todos.splice(todoIndex, 1);
-    console.log("removeListItem function called.");
-  };
+  const removeListItem = id =>  {
+    setTodos(todos.filter((todo) => todo.id !== id));
+    console.log("removeListItem function called on id: " + id);
+
+  }
 
   return (
     <>

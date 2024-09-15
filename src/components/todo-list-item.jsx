@@ -1,20 +1,11 @@
+import { useState } from "react";
 import "./todo-list-item.css";
 
-function ListItem({ handleRemoveListItem }) {
+
+function TodoListItem({ }) {
   return (
-    <>
-      <li className="listitem">
-        <p>Test ListItem</p>
-        <button
-          onClick={() => {
-            handleRemoveListItem();
-          }}
-        >
-          X
-        </button>
-      </li>
-    </>
+    <p>TodoListItem</p>
   );
 }
 
-export default ListItem;
+export default TodoListItem;

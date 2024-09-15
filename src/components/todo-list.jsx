@@ -46,7 +46,7 @@ function ToDoList() {
             <li key={todos.id}>
               Todos is: {todos.content} with an id of {todos.id}
             </li>
-            <button onClick={() => removeListItem(todos.id)}>Delete</button>
+            <button onClick={() => removeListItem(todos.id)}>Remove</button>
           </>
         ))}
       </ul>

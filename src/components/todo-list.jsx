@@ -18,6 +18,7 @@ function ToDoList() {
       "handleSavingListItem called with the following content: " +
         todoInputContent
     );
+    setTodoInputContent("");
   };
 
   const removeListItem = (id) => {
@@ -33,6 +34,7 @@ function ToDoList() {
       <form onSubmit={handleSavingListItem}>
         <textarea
           type="text"
+          value={todoInputContent}
           placeholder="Enter text here"
           onChange={(e) => setTodoInputContent(e.target.value)}
         />
@@ -41,9 +43,12 @@ function ToDoList() {
       <p>TodoInputContent is: {todoInputContent}</p>
       <ul>
         {todos.map((todos) => (
-          <li key={todos.id}>
-            Todos is: {todos.content} with an id of {todos.id}
-          </li>
+          <>
+            <li key={todos.id}>
+              Todos is: {todos.content} with an id of {todos.id}
+            </li>
+            <button onClick={() => removeListItem(todos.id)}>Delete</button>
+          </>
         ))}
       </ul>
     </>

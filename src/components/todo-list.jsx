@@ -11,11 +11,12 @@ function ToDoList() {
     const newTodo = {
       id: nextId.current++,
       content: todoInputContent,
+      status: true,
     };
     setTodos([...todos, newTodo]);
     console.log(
       "handleSavingListItem called with the following content: " +
-        todoInputContent
+        todoInputContent + " with the ID: " + newTodo.id + " and the status of: " + newTodo.status
     );
     setTodoInputContent("");
   };
@@ -27,9 +28,9 @@ function ToDoList() {
   }
 
   const markListItemAsDone = id =>  {
-    // setTodos(todos.filter((todo) => todo.id !== id));
-    console.log("markListItemAsDone function called on id: " + id);
-
+    console.log("Current status is: " + todos[id].status);
+    todos[id].status = !todos[id].status;
+    console.log("markListItemAsDone function called on id: " + id + " the status is now: " + todos[id].status);
   }
 
   return (

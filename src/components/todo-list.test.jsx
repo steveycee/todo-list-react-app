@@ -57,7 +57,7 @@ describe("Todo list tests", () => {
 		expect(updatedTodosListItem).toBeNull()
 	});
 
-	it("renders the ToDoList component, adds 3 todo's and then deletes the 2nd one.", () => {
+	it("renders the ToDoList component, adds 3 todo's and then deletes the last one.", () => {
 		addMultipleTodos(3, 'Add 3 todos and delete the 2nd one: New todo ');
 		checkListLength(3);
 		removeTodo(2)

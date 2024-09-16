@@ -5,6 +5,7 @@ import { beforeEach, it } from "vitest";
 let submitButton;
 
 describe("Todo list tests", () => {
+
 	beforeEach(() => {
 		render(<ToDoList />);
 		submitButton = screen.getByRole("button", { name: "✓" });
@@ -14,12 +15,15 @@ describe("Todo list tests", () => {
 		expect(screen.getByRole("heading")).toHaveTextContent("Test ToDoList");
 		screen.debug();
 	});
+
 	it("renders the ToDoList component and finds the submit button.", () => {
 		expect(submitButton).toBeInTheDocument();
 	});
+
 	it("renders the ToDoList component and finds the submit button.", () => {
 		expect(submitButton).toBeInTheDocument();
 	});
+
 	it("renders the ToDoList component and types in the input field.", () => {
 		const input = screen.getByRole("textbox");
 		fireEvent.change(input, { target: { value: "Steve" } });
@@ -32,6 +36,7 @@ describe("Todo list tests", () => {
 		expect(todosListItem).toHaveLength(2);
 		expect(todosListItem[1]).toBeInTheDocument();
 	});
+
 	it("renders the ToDoList component, adds a todo and then removes the todo.", () => {
 		// create a todo item
 		const input = screen.getByRole("textbox");
@@ -49,4 +54,5 @@ describe("Todo list tests", () => {
 		expect(updatedTodosListItem).toBeNull()
 		screen.debug();
 	});
+	
 });

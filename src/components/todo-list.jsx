@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-// import TodoListItem from "./todo-list-item";
 
 function ToDoList() {
   const [todoInputContent, setTodoInputContent] = useState("");

@@ -26,6 +26,12 @@ function ToDoList() {
 
   }
 
+  const markListItemAsDone = id =>  {
+    // setTodos(todos.filter((todo) => todo.id !== id));
+    console.log("markListItemAsDone function called on id: " + id);
+
+  }
+
   return (
     <>
       <h2>Test ToDoList</h2>
@@ -42,6 +48,7 @@ function ToDoList() {
       <ul>
         {todos.map((todos) => (
           <>
+            <button onClick={() => markListItemAsDone(todos.id)}>Done</button>
             <li key={todos.id}>
               Todos is: {todos.content} with an id of {todos.id}
             </li>

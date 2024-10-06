@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import "./todo-list.css";
 
 function ToDoList() {
   const [todoInputContent, setTodoInputContent] = useState("");
@@ -34,30 +35,35 @@ function ToDoList() {
   }
 
   return (
-    <>
+    <div className='flex-container'>
+ 			<h1>Todo List App</h1>
       <h2>Test ToDoList</h2>
-      <form onSubmit={handleSavingListItem}>
+      <form onSubmit={handleSavingListItem} className="flex-row border">
         <textarea
           type="text"
           value={todoInputContent}
           placeholder="Enter text here"
           onChange={(e) => setTodoInputContent(e.target.value)}
+          required
         />
-        <input type="submit" value="✓" />
+        <input type="submit" value="✓" className="form-submit-button" />
       </form>
       <p>TodoInputContent is: {todoInputContent}</p>
-      <ul>
-        {todos.map((todos) => (
-          <>
-            <button onClick={() => markListItemAsDone(todos.id)}>Done</button>
-            <li key={todos.id}>
-              Todos is: {todos.content} with an id of {todos.id}
-            </li>
-            <button onClick={() => removeListItem(todos.id)}>Remove</button>
-          </>
-        ))}
-      </ul>
-    </>
+      <div className="todo-list-item">
+        <ul>
+          {todos.map((todos) => (
+            <>
+              <li key={todos.id} className="flex-row border">
+                Todos is: {todos.content} with an id of {todos.id}
+              </li>
+              <button onClick={() => markListItemAsDone(todos.id)}>Done</button>
+              <button onClick={() => removeListItem(todos.id)}>Remove</button>
+              <br />
+            </>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 export default ToDoList;

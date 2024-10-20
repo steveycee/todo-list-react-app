@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import ToDoListInput from "./todo-list-input";
 import "./todo-list.css";
 
 function ToDoList() {
@@ -38,17 +39,7 @@ function ToDoList() {
     <div className='flex-container'>
  			<h1>Todo List App</h1>
       <h2>Test ToDoList</h2>
-      <form onSubmit={handleSavingListItem} className="flex-row border">
-        <textarea
-          type="text"
-          value={todoInputContent}
-          placeholder="Enter text here"
-          onChange={(e) => setTodoInputContent(e.target.value)}
-          required
-        />
-        <input type="submit" value="✓" className="form-submit-button" />
-      </form>
-      <p>TodoInputContent is: {todoInputContent}</p>
+      <ToDoListInput handleSavingListItem={handleSavingListItem} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
       <div className="todo-list-item">
         <ul>
           {todos.map((todos) => (

@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import "./todo-list.css";
 
 function ToDoListInput({ todoInputContent, handleSavingListItem, setTodoInputContent }) {

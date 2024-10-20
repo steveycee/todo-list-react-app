@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import ToDoListInput from "./todo-list-input";
+import ToDoListDisplay from "./todo-list-display";
+
 import "./todo-list.css";
 
 function ToDoList() {
@@ -40,20 +42,7 @@ function ToDoList() {
  			<h1>Todo List App</h1>
       <h2>Test ToDoList</h2>
       <ToDoListInput handleSavingListItem={handleSavingListItem} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
-      <div className="todo-list-item">
-        <ul>
-          {todos.map((todos) => (
-            <>
-              <li key={todos.id} className="flex-row border">
-                Todos is: {todos.content} with an id of {todos.id}
-              </li>
-              <button onClick={() => markListItemAsDone(todos.id)}>Done</button>
-              <button onClick={() => removeListItem(todos.id)}>Remove</button>
-              <br />
-            </>
-          ))}
-        </ul>
-      </div>
+      <ToDoListDisplay todos={todos} removeListItem={removeListItem} markListItemAsDone={markListItemAsDone} />
     </div>
   );
 }

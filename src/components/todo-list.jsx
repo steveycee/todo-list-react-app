@@ -10,24 +10,12 @@ function ToDoList() {
 
   let nextId = useRef(0);
 
-  const removeListItem = id =>  {
-    setTodos(todos.filter((todo) => todo.id !== id));
-    console.log("removeListItem function called on id: " + id);
-
-  }
-
-  const markListItemAsDone = id =>  {
-    console.log("Current status is: " + todos[id].status);
-    todos[id].status = !todos[id].status;
-    console.log("markListItemAsDone function called on id: " + id + " the status is now: " + todos[id].status);
-  }
-
   return (
     <div className='flex-container'>
  			<h1>Todo List App</h1>
       <h2>Test ToDoList</h2>
-      <ToDoListInput todos={todos} setTodos = {setTodos} nextId = {nextId} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
-      <ToDoListDisplay todos={todos} removeListItem={removeListItem} markListItemAsDone={markListItemAsDone} />
+      <ToDoListInput todos = {todos} setTodos = {setTodos} nextId = {nextId} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
+      <ToDoListDisplay todos = {todos} setTodos = {setTodos} />
     </div>
   );
 }

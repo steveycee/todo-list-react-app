@@ -1,7 +1,8 @@
 import "./todo-list.css";
 
 function ToDoListItem({ todos, removeListItem, markListItemAsDone }) {
-  return (
+
+    return (
             <>
                 <li key={todos.id} className="flex-row border">
                     Todos is: {todos.content} with an id of {todos.id}

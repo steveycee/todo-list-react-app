@@ -10,21 +10,6 @@ function ToDoList() {
 
   let nextId = useRef(0);
 
-  const handleSavingListItem = (e) => {
-    e.preventDefault();
-    const newTodo = {
-      id: nextId.current++,
-      content: todoInputContent,
-      status: true,
-    };
-    setTodos([...todos, newTodo]);
-    console.log(
-      "handleSavingListItem called with the following content: " +
-        todoInputContent + " with the ID: " + newTodo.id + " and the status of: " + newTodo.status
-    );
-    setTodoInputContent("");
-  };
-
   const removeListItem = id =>  {
     setTodos(todos.filter((todo) => todo.id !== id));
     console.log("removeListItem function called on id: " + id);
@@ -41,7 +26,7 @@ function ToDoList() {
     <div className='flex-container'>
  			<h1>Todo List App</h1>
       <h2>Test ToDoList</h2>
-      <ToDoListInput handleSavingListItem={handleSavingListItem} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
+      <ToDoListInput todos={todos} setTodos = {setTodos} nextId = {nextId} setTodoInputContent={setTodoInputContent} todoInputContent={todoInputContent} />
       <ToDoListDisplay todos={todos} removeListItem={removeListItem} markListItemAsDone={markListItemAsDone} />
     </div>
   );

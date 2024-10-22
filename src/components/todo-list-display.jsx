@@ -7,13 +7,12 @@ function ToDoListDisplay({ todos, setTodos }) {
   const removeListItem = id =>  {
     setTodos(todos.filter((todo) => todo.id !== id));
     console.log("removeListItem function called on id: " + id);
-
   }
-
+  
   const markListItemAsDone = id =>  {
-    console.log("Current status is: " + todos[id].status);
-    todos[id].status = !todos[id].status;
-    console.log("markListItemAsDone function called on id: " + id + " the status is now: " + todos[id].status);
+    let todo = todos.find(todo => todo.id === id);
+    todo.status = !todo.status;
+    console.log('markListItemAsDone called. Object is: ' + todo.status)
   }
 
   return (

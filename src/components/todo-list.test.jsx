@@ -35,7 +35,7 @@ describe("Todo list tests", () => {
 	});
 
 	it("renders the ToDoList component and the todolist has a heading.", () => {
-		expect(screen.getByRole("heading")).toHaveTextContent("Test ToDoList");
+		expect(screen.getByRole("heading", {level: 2})).toHaveTextContent("Test ToDoList");
 		screen.debug();
 	});
 
@@ -66,7 +66,8 @@ describe("Todo list tests", () => {
 		// should I assert that the text in the other 2 are right?
 	});
 
-	it.skip("renders the ToDoList component, adds a todo and then marks it as done.", () => {
+	it("renders the ToDoList component, adds a todo and then marks it as done.", () => {
+		addTodo("Done button test");
 		const setDoneButton = screen.getByRole("button", { name: "Done" });
 		fireEvent.click(setDoneButton);
 	});

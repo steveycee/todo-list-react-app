@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import ToDoList from "./todo-list";
-import { beforeEach, it } from "vitest";
+import { beforeEach, expect, it } from "vitest";
 
 let submitButton;
 
@@ -70,6 +70,11 @@ describe("Todo list tests", () => {
 		addTodo("Done button test");
 		const setDoneButton = screen.getByRole("button", { name: "Done" });
 		fireEvent.click(setDoneButton);
+		const todo = screen.getByRole("listitem");
+		expect(todo).toHaveStyle("background-color: rgb(240, 128, 128)");
+		fireEvent.click(setDoneButton);
+		expect(todo).toHaveStyle("background-color: rgb(144, 238, 144)");
+
 	});
 
 });
